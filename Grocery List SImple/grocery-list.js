@@ -27,6 +27,9 @@ list.addEventListener('click', function(ev) {
   }
 }, false);
 
+
+itemList = [];
+
 // Create a new list item when clicking on the "Add" button
 function newElement() {
 	var li = document.createElement("li");
@@ -53,25 +56,63 @@ function newElement() {
 		}
 	}
 
-	userId = 1;
-	groceryID = 1;
-	url = "";
-	body = {
-		"item" : inputValue;
-	};
+	itemList.push( inoutValue )
 
-	postRequest(url, body);
+	
   
+}
+
+function newList(){
+
+	itemList = [];
+
+	location.reload();
+
+}
+function viewList(){
+	
+	//get array of lists from php
+
+	for (i in FAKEDATA){
+
+		var li = document.createElement("li");
+		var inputValue = i;
+		var t = document.createTextNode(inputValue);
+		li.appendChild(t);
+		if (inputValue === '') {
+			alert("You must write something!");
+		} else {
+			document.getElementById("myUL").appendChild(li);
+		}
+		document.getElementById("myInput").value = "";
+
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		li.appendChild(span);
+
+		
+			close[i].onclick = function() {
+		  	var div = this.parentElement;
+		  	div.style.display = "none";
+		}
+	}
 }
 
 function saveList(){
 	
+	var inputValue = document.getElementById("myInput2").value;
+	var listname;
 	
-}
-
-function viewLists(){
+	if (inputValue === '') {
+		alert("Invalid list name!");
+	} else {
+		listname = inputValue;
+	}
 	
 	
+  
 }
 
 function getRequest(url) {
