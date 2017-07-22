@@ -27,7 +27,7 @@ class UserModel
 	
 	public function getUser($userId)
 	{
-		$query = "SELECT * FROM " . TABLE_NAME . " WHERE idUser = " . $userId
+		$query = "SELECT * FROM " . TABLE_NAME . " WHERE idUser = " . $userId . ";";
 		$result = mysqli_query($conn, $query);
 
 		if (mysqli_num_rows($result) > 0) 

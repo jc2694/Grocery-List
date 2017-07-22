@@ -25,9 +25,23 @@ class GListModel
 		}
 	}
 	
+	public function $saveGlidst($gList)
+	{
+		var $sql = "UPDATE " . TABLE_NAME . " SET name = \"" . $gList->$name . "\", items = " . $glist->$items . " WHERE idgrocery = " . $gList->$id . ";"; 
+		
+		if (mysqli_query($conn, $sql)) 
+		{
+			echo "Record updated successfully";
+		} 
+		else 
+		{
+			echo "Error updating record: " . mysqli_error($conn);
+		}
+	}
+	
 	public function getGList($GListId)
 	{
-		$query = "SELECT * FROM " . TABLE_NAME . " WHERE idgrocery = " . $GListId
+		$query = "SELECT * FROM " . TABLE_NAME . " WHERE idgrocery = " . $GListId . ";";
 		$result = mysqli_query($conn, $query);
 
 		if (mysqli_num_rows($result) > 0) 
